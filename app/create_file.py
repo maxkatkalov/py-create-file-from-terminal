@@ -11,7 +11,7 @@ def create_dir() -> str:
         if not os.path.exists(path):
             os.makedirs(path)
         return path
-    path = os.path.join(str(sys.argv[sys.argv.index("-d") + 1:]))
+    path = os.path.join(str(sys.argv[sys.argv.index("-d") + 1 :]))
     if not os.path.exists(path):
         os.makedirs(path)
     return path
