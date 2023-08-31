@@ -11,7 +11,7 @@ def create_dir() -> str:
         if not os.path.exists(path):
             os.makedirs(path)
         return path
-    path = os.path.join("/".join(sys.argv[sys.argv.index("-d") + 1 :]))
+    path = os.path.join(str(sys.argv[sys.argv.index("-d") + 1:]))
     if not os.path.exists(path):
         os.makedirs(path)
     return path
@@ -22,10 +22,9 @@ def write_proccess(file_to_write: str) -> None:
         active_file.write(f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         while True:
             write_line = input("Enter content line: ")
-            if write_line != "stop":
-                active_file.write(write_line + "\n")
-            elif write_line == "stop":
+            if write_line == "stop":
                 return
+            active_file.write(write_line + "\n")
 
 
 def write_file(path_file: str) -> None:
