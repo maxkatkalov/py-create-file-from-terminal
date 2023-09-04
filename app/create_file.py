@@ -6,7 +6,7 @@ from datetime import datetime
 def create_dir() -> str:
     if "-f" in sys.argv:
         path = os.path.join(
-            "/".join(sys.argv[sys.argv.index("-d") + 1 : sys.argv.index("-f")])
+            str(sys.argv[sys.argv.index("-d") + 1 : sys.argv.index("-f")])
         )
         if not os.path.exists(path):
             os.makedirs(path)
