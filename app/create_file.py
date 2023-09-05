@@ -5,15 +5,16 @@ from datetime import datetime
 
 def create_dir() -> str:
     if "-f" in sys.argv:
-        path = os.path.join(
-            str(sys.argv[sys.argv.index("-d") + 1 : sys.argv.index("-f")])
-        )
-        if not os.path.exists(path):
-            os.makedirs(path)
-        return path
-    path = os.path.join(str(sys.argv[sys.argv.index("-d") + 1 :]))
+        dir_index = sys.argv.index("-d") + 1
+        file_index = sys.argv.index("-f")
+        path = os.path.join(*sys.argv[dir_index:file_index])
+    else:
+        dir_index = sys.argv.index("-d") + 1
+        path = os.path.join(*sys.argv[dir_index:])
+
     if not os.path.exists(path):
         os.makedirs(path)
+
     return path
 
 
